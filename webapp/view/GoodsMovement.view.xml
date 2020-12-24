@@ -1,0 +1,33 @@
+<mvc:View displayBlock="true" controllerName="com.sun.sd.packinglist.controller.GoodsMovement" height="100%" xmlns="sap.m" xmlns:f="sap.f"
+	xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns:tnt="sap.tnt" xmlns:t="sap.ui.table">
+	<App id="idAppControl">
+		<pages>
+			<Page title="{i18n>goodsMovementTitle}">
+				<content>
+					<MessageStrip text="{/info}" showIcon="true" showCloseButton="true"
+						class="sapUiMediumMarginBottom" enableFormattedText="true"/>
+					<t:Table id="tableGoodsMovement" alternateRowColors="true" selectionMode="Single"
+						columns="{path:'movementViewModel>/columns', factory:'._sizeTableColumnMovement'}" rows="{movementViewModel>/rows}"
+						enableColumnReordering="false" visibleRowCount="{= ${movementViewModel>/rows}.length }">
+						<t:rowSettingsTemplate>
+							<t:RowSettings highlight="{= ${movementViewModel>Mode} === 'S' ? 'Success' : ${movementViewModel>Mode} === 'W' ? 'Warning' : 'Error' }"/>
+						</t:rowSettingsTemplate>
+						<t:extension>
+							<OverflowToolbar>
+								<tnt:InfoLabel id="idInfo" text="{movementViewModel>/defaultData}" displayOnly="true" colorScheme="5" width="13em"/>
+								<ToolbarSpacer/>
+								<Button icon="sap-icon://bar-code" type="Emphasized" press="onButtonBarcodeRead" text="{i18n>ReadBarcode}"/>
+							</OverflowToolbar>
+						</t:extension>
+					</t:Table>
+				</content>
+				<footer>
+					<OverflowToolbar id="otbFooter">
+						<ToolbarSpacer/>
+						<Button type="Transparent" icon="sap-icon://outbox" press="onActionGoodsMovm" text="{i18n>GoodsMovm}"/>
+					</OverflowToolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

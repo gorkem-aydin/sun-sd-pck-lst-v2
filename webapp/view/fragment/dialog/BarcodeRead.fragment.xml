@@ -1,0 +1,23 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
+	<Dialog id="dlgAddBarcode" title="{i18n>BarcodeEntry}" afterClose="onDlgBRCClose">
+		<content>
+			<VBox class="sapUiSmallMargin">
+				<f:SimpleForm id="idSimpleFormBarcode" editable="false" layout="ResponsiveGridLayout" title="{i18n>ReadBarcode}" labelSpanXL="3" labelSpanL="3"
+					labelSpanM="3" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1"
+					columnsL="1" columnsM="1" singleContainerFullSize="false">
+					<f:content>
+						<Label text="{i18n>No}"/>
+						<Input value="{goodsModel>/No}" enabled="false" width="3rem"/>
+						<Label text="{i18n>vbelnVl}"/>
+						<Input value="{goodsModel>/orderId}" enabled="false" width="6rem"/>
+						<Label text="{i18n>BarcodeNo}"/>
+						<Input id="inpBarcode" enabled="true" width="20rem" placeholder="{i18n>HolBarcode}"/>
+					</f:content>
+				</f:SimpleForm>
+			</VBox>
+		</content>
+		<buttons>
+			<Button text="{i18n>cancel}" press=".closeDialog"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>
